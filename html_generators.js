@@ -30,26 +30,217 @@ HtmlGenerator['baseframe'] = function(block) {
   return code;
 };
 
+HtmlGenerator['sphere'] = function(block) {
+
+  var position = HtmlGenerator.valueToCode(block, 'position_vector', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = "<a-sphere position='";
+
+  if (position != "") {
+    code += position + "'";
+  } else {
+    code += "0 1.25 -5'";
+  }
+
+  var rotation = HtmlGenerator.valueToCode(block, 'radius', Blockly.JavaScript.ORDER_ATOMIC);
+  code += " radius='";
+  if (rotation != "") {
+    code += rotation + "'";
+  } else {
+    code += "1.25'";
+  }
+
+  var color = HtmlGenerator.valueToCode(block, 'color', Blockly.JavaScript.ORDER_ATOMIC);
+  code += " color='";
+  if (color != "") {
+    code += color + "'";
+  } else {
+    code += "#EF2D5E'";
+  }
+  
+  code +=  " shadow></a-sphere>\n";
+
+  return code;
+};
+
+HtmlGenerator['cylinder'] = function(block) {
+
+  var position = HtmlGenerator.valueToCode(block, 'position_vector', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = "<a-cylinder position='";
+
+  if (position != "") {
+    code += position + "'";
+  } else {
+    code += "1 0.75 -3'";
+  }
+
+  var rotation = HtmlGenerator.valueToCode(block, 'radius', Blockly.JavaScript.ORDER_ATOMIC);
+  code += " radius='";
+  if (rotation != "") {
+    code += rotation + "'";
+  } else {
+    code += "1.25'";
+  }
+
+  var rotation = HtmlGenerator.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
+  code += " height='";
+  if (rotation != "") {
+    code += rotation + "'";
+  } else {
+    code += "1.25'";
+  }
+
+  var color = HtmlGenerator.valueToCode(block, 'color', Blockly.JavaScript.ORDER_ATOMIC);
+  code += " color='";
+  if (color != "") {
+    code += color + "'";
+  } else {
+    code += "#FFC65D'";
+  }
+  
+  code +=  " shadow></a-cylinder>\n";
+
+  return code;
+};
+
+HtmlGenerator['plane'] = function(block) {
+
+  var position = HtmlGenerator.valueToCode(block, 'position_vector', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = "<a-plane position='";
+
+  if (position != "") {
+    code += position + "'";
+  } else {
+    code += "1 0.75 -3'";
+  }
+
+  var rotation = HtmlGenerator.valueToCode(block, 'rotation_vector', Blockly.JavaScript.ORDER_ATOMIC);
+  code += " rotation='";
+  if (rotation != "") {
+    code += rotation + "'";
+  } else {
+    code += "0 4.5 0'";
+  }
+
+  var width = block.getFieldValue('width');
+  code += " width='";
+  if (width != "") {
+    code += width + "'";
+  } else {
+    code += "1'";
+  }
+
+  var height = block.getFieldValue('height');
+  code += " height='";
+  if (height != "") {
+    code += height + "'";
+  } else {
+    code += "1'";
+  }
+
+  var color = block.getFieldValue('color');
+  code += " color='";
+  if (color != "") {
+    code += color + "'";
+  } else {
+    code += "#FFC65D'";
+  }
+  
+  code +=  " shadow></a-plane>\n";
+
+  return code;
+};
+
+
 HtmlGenerator['html'] = function(block) {
+  console.log(HtmlGenerator);
   var statements_content = HtmlGenerator.statementToCode(block, 'content');
   var code = '<!DOCTYPE HTML>\n<html>\n' + statements_content + '</html>\n';
   return code;
 };
 
+
+function getAllHtmlHeadSection() {
+  
+  var str = "<!DOCTYPE HTML>\n";
+  str += "<html>\n";
+  str += " <head>\n";
+  str += "  <meta charset='utf-8'>\n";
+  str += "   <title>Blockly HTML</title>\n";
+  str += "   <script src='https://aframe.io/releases/0.8.2/aframe.min.js'></script>\n";
+  str += "  </head>\n";
+  str += "  <body>\n"
+  str += "    <a-scene";
+  return str;
+
+}
+
 HtmlGenerator['a_scene'] = function(block) {
   var properties_content = HtmlGenerator.statementToCode(block, 'properties');
-  var code = "<a-scene";
+  var code = getAllHtmlHeadSection();
 
   if (properties_content != "") {
     code += properties_content;
   }
 
-  code += ">";
+  code += ">\n";
 
-  code += "</a-scene>";
+  var entities_content = HtmlGenerator.statementToCode(block, 'entities');
+
+  if (entities_content != "") {
+    code += entities_content;
+  }
+
+  code += "</a-scene>\n";
+  code += "</body>\n</html>\n";
   
   return code;
 };
+
+HtmlGenerator['box'] = function(block) {
+
+  var position = HtmlGenerator.valueToCode(block, 'position_vector', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = "<a-box position='";
+
+  if (position != "") {
+    code += position + "'";
+  } else {
+    code += "-1 0.5 -3'";
+  }
+
+  var rotation = HtmlGenerator.valueToCode(block, 'rotation_vector', Blockly.JavaScript.ORDER_ATOMIC);
+  code += " rotation='";
+  if (rotation != "") {
+    code += rotation + "'";
+  } else {
+    code += "0 4.5 0'";
+  }
+
+  var color = HtmlGenerator.valueToCode(block, 'color', Blockly.JavaScript.ORDER_ATOMIC);
+  code += " color='";
+  if (color != "") {
+    code += color + "'";
+  } else {
+    code += "#4CC3D9'";
+  }
+  
+  code +=  " shadow></a-box>\n";
+
+  return code;
+}
+
+HtmlGenerator['input_text'] = function(block) {
+  return [block.getFieldValue('input_text'), Blockly.JavaScript.ORDER_ATOMIC];
+}
+
+HtmlGenerator['vector'] = function(block) {
+
+  var x = block.getFieldValue('x');
+  var y = block.getFieldValue('y');
+  var z = block.getFieldValue('z');
+
+  return [x + ' ' + y + ' ' + z, Blockly.JavaScript.ORDER_ATOMIC];
+  
+}
 
 HtmlGenerator['background'] = function(block) {
   var properties_content = HtmlGenerator.statementToCode(block, 'background_properties');

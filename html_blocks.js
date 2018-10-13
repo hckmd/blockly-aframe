@@ -668,8 +668,6 @@ var htmlBlocks =
       "name": "entities"
     }
   ],
-  "previousStatement": null,
-  "nextStatement": null,
   "colour": 75,
   "tooltip": "",
   "helpUrl": ""
@@ -710,6 +708,180 @@ var htmlBlocks =
   "previousStatement": null,
   "nextStatement": null,
   "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "box",
+  "message0": "box %1 position %2 rotation %3 color %4",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "position_vector",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "rotation_vector",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "color",
+      "align": "RIGHT"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 65,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "vector",
+  "message0": "x: %1 y: %2 z: %3",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "x",
+      "value": 0
+    },
+    {
+      "type": "field_number",
+      "name": "y",
+      "value": 0
+    },
+    {
+      "type": "field_number",
+      "name": "z",
+      "value": 0
+    }
+  ],
+  "output": null,
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "input_text",
+  "message0": "%1",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "input_text",
+      "text": "text"
+    }
+  ],
+  "output": null,
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "sphere",
+  "message0": "sphere %1 position %2 radius %3 color %4",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "position_vector",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "radius",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "color",
+      "align": "RIGHT"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 65,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "cylinder",
+  "message0": "cylinder %1 position %2 radius %3 height %4 color %5",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "position_vector",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "radius",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "height",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "color",
+      "align": "RIGHT"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 65,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "plane",
+  "message0": "plane %1 width: %2 height: %3 color: %4 %5 position: %6 rotation: %7",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_input",
+      "name": "width",
+      "text": "1"
+    },
+    {
+      "type": "field_input",
+      "name": "height",
+      "text": "1"
+    },
+    {
+      "type": "field_input",
+      "name": "color",
+      "text": "black"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "position_vector",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "rotation_vector",
+      "align": "RIGHT"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 65,
   "tooltip": "",
   "helpUrl": ""
 }]
