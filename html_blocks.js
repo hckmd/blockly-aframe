@@ -646,10 +646,22 @@ var htmlBlocks =
 },
 {
   "type": "a_scene",
-  "message0": "scene %1 %2",
+  "message0": "scene %1 properties %2 %3 entities %4 %5",
   "args0": [
     {
       "type": "input_dummy"
+    },
+    {
+      "type": "input_dummy",
+      "align": "CENTRE"
+    },
+    {
+      "type": "input_statement",
+      "name": "properties"
+    },
+    {
+      "type": "input_dummy",
+      "align": "CENTRE"
     },
     {
       "type": "input_statement",
@@ -659,6 +671,45 @@ var htmlBlocks =
   "previousStatement": null,
   "nextStatement": null,
   "colour": 75,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "background",
+  "message0": "background %1 %2",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "background_properties"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "genericattribute",
+  "message0": "%1 : %2",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "attribute",
+      "text": "attribute"
+    },
+    {
+      "type": "field_input",
+      "name": "value",
+      "text": "value"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 230,
   "tooltip": "",
   "helpUrl": ""
 }]
