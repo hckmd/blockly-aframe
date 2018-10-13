@@ -13,17 +13,6 @@
           </block>
         </statement>
         <next>
-          <block type="body_attributes" id="PScP7X][kjt|f!8/L%#=">
-            <value name="NAME">
-              <block type="style" id="m0}^Fb+}Ev,7[q@ztf#N">
-                <statement name="NAME">
-                  <block type="genericstyle" id="6@F@,+j$;T5u{n4?uEUr">
-                    <field name="property">font-family</field>
-                    <field name="value">sans-serif</field>
-                  </block>
-                </statement>
-              </block>
-            </value>
             <statement name="content">
               <block type="headline" id="^Afs`s`}=wNp`R8ca37J">
                 <field name="NAME">h1</field>

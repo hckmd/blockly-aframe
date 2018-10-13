@@ -17,7 +17,6 @@ function removeIndentAndTrailingNewline() {
    
 }
 
-
 HtmlGenerator['baseframe'] = function(block) {
   var statements_head = HtmlGenerator.statementToCode(block, 'head');
   var statements_body = HtmlGenerator.statementToCode(block, 'body');
@@ -37,9 +36,20 @@ HtmlGenerator['html'] = function(block) {
   return code;
 };
 
+HtmlGenerator['a_scene'] = function(block) {
+  var statements_content = HtmlGenerator.statementToCode(block, 'entities');
+  var code = "<a-scene background='color: #ECECEC'>\n" + statements_content + "</a-scene>\n";
+  return code;
+};
+
 HtmlGenerator['body'] = function(block) {
   var statements_content = HtmlGenerator.statementToCode(block, 'content');
   var code = '<body>\n' + statements_content + '</body>\n';
+  return code;
+};
+
+HtmlGenerator['load_aframe'] = function(block) {
+  var code = '<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>\n';
   return code;
 };
 
@@ -179,24 +189,6 @@ HtmlGenerator['horizontalbreak'] = function(block) {
   return code;
 };
 
-HtmlGenerator['unorderedlist'] = function(block) {
-  var statements_name = HtmlGenerator.statementToCode(block, 'NAME');
-  var code = '<ul>\n' + statements_name + '</ul>\n';
-  return code;
-};
-
-HtmlGenerator['orderedlist'] = function(block) {
-  var statements_name = HtmlGenerator.statementToCode(block, 'NAME');
-  var code = '<ol>\n' + statements_name + '</ol>\n';
-  return code;
-};
-
-HtmlGenerator['listelement'] = function(block) {
-  var statements_content = HtmlGenerator.statementToCode(block, 'content');
-  var code = '<li>' + statements_content + '</li>\n';
-  return code;
-};
-
 HtmlGenerator['inserted'] = function(block) {
   var statements_content = HtmlGenerator.statementToCode(block, 'content');
   var code = '<ins>' + statements_content.trim() + '</ins>\n';
@@ -260,62 +252,5 @@ HtmlGenerator['variable'] = function(block) {
 HtmlGenerator['form'] = function(block) {
   var statements_content = HtmlGenerator.statementToCode(block, 'content');
   var code = '<form>\n' + statements_content + '</form>\n';
-  return code;
-};
-
-HtmlGenerator['table'] = function(block) {
-  var statements_content = HtmlGenerator.statementToCode(block, 'content');
-  var code = '<table>\n' + statements_content + '</table>\n';
-  return code;
-};
-
-HtmlGenerator['tablerow'] = function(block) {
-  var statements_content = HtmlGenerator.statementToCode(block, 'content');
-  var code = '<tr>\n' + statements_content + '</tr>\n';
-  return code;
-};
-
-HtmlGenerator['tablecell'] = function(block) {
-  var statements_content = HtmlGenerator.statementToCode(block, 'content');
-  var code = '<td>' + statements_content.trim() + '</td>\n';
-  return code;
-};
-
-HtmlGenerator['input_text'] = function(block) {
-  var text_default = block.getFieldValue('default');
-  var code = '<input value="' + text_default + '">\n';
-  return code;
-};
-
-HtmlGenerator['button'] = function(block) {
-  var statements_name = HtmlGenerator.statementToCode(block, 'NAME');
-  var code = '<button>' + statements_name.trim() + '</button>\n';
-  return code;
-};
-
-HtmlGenerator['input'] = function(block) {
-  var dropdown_type = block.getFieldValue('type');
-  var text_value = block.getFieldValue('value');
-  var value_text = HtmlGenerator.valueToCode(block, 'text', HtmlGenerator.ORDER_ATOMIC);
-  var code = '<input type="' + dropdown_type + '" value="' + text_value + '"' + value_text + ' />\n';
-  return code;
-};
-
-HtmlGenerator['script'] = function(block) {
-  var statements_content = Blockly.JavaScript.statementToCode(block, 'content');
-  var code = '<script>\n' + statements_content + '</script>\n';
-  return code;
-};
-
-HtmlGenerator['onclick'] = function(block) {
-  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
-  var code = ' onclick="' + statements_name.trim() + '"';
-  return [code, HtmlGenerator.ORDER_NONE];
-};
-
-HtmlGenerator['body_attributes'] = function(block) {
-  var value_name = HtmlGenerator.valueToCode(block, 'NAME', HtmlGenerator.ORDER_ATOMIC);
-  var statements_content = HtmlGenerator.statementToCode(block, 'content');
-  var code = '<body' + value_name + '>\n' + statements_content + '</body>\n';
   return code;
 };
