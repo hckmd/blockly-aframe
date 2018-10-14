@@ -38,23 +38,23 @@ HtmlGenerator['sphere'] = function(block) {
   if (position != "") {
     code += position + "'";
   } else {
-    code += "0 1.25 -5'";
+    code += "2 2 -3'";
   }
 
-  var rotation = HtmlGenerator.valueToCode(block, 'radius', Blockly.JavaScript.ORDER_ATOMIC);
+  var radius = block.getFieldValue('radius');
   code += " radius='";
-  if (rotation != "") {
-    code += rotation + "'";
+  if (radius != "") {
+    code += radius + "'";
   } else {
-    code += "1.25'";
+    code += "1'";
   }
 
-  var color = HtmlGenerator.valueToCode(block, 'color', Blockly.JavaScript.ORDER_ATOMIC);
+  var color = block.getFieldValue('color');
   code += " color='";
   if (color != "") {
     code += color + "'";
   } else {
-    code += "#EF2D5E'";
+    code += "#grey'";
   }
   
   code +=  " shadow></a-sphere>\n";
@@ -70,26 +70,26 @@ HtmlGenerator['cylinder'] = function(block) {
   if (position != "") {
     code += position + "'";
   } else {
-    code += "1 0.75 -3'";
+    code += "1 2 -3'";
   }
 
-  var rotation = HtmlGenerator.valueToCode(block, 'radius', Blockly.JavaScript.ORDER_ATOMIC);
+  var radius = block.getFieldValue('radius');
   code += " radius='";
-  if (rotation != "") {
-    code += rotation + "'";
+  if (radius != "") {
+    code += radius + "'";
   } else {
-    code += "1.25'";
+    code += "1";
   }
 
-  var rotation = HtmlGenerator.valueToCode(block, 'height', Blockly.JavaScript.ORDER_ATOMIC);
+  var height = block.getFieldValue('height');
   code += " height='";
-  if (rotation != "") {
-    code += rotation + "'";
+  if (height != "") {
+    code += height + "'";
   } else {
-    code += "1.25'";
+    code += "1";
   }
 
-  var color = HtmlGenerator.valueToCode(block, 'color', Blockly.JavaScript.ORDER_ATOMIC);
+  var color = block.getFieldValue('color');
   code += " color='";
   if (color != "") {
     code += color + "'";
@@ -175,11 +175,13 @@ function getAllHtmlHeadSection() {
 }
 
 HtmlGenerator['a_scene'] = function(block) {
-  var properties_content = HtmlGenerator.statementToCode(block, 'properties');
+
   var code = getAllHtmlHeadSection();
 
-  if (properties_content != "") {
-    code += properties_content;
+  var background_color = block.getFieldValue('background_color');
+
+  if (background_color != "") {
+    code += " background= 'color: " + background_color + "'";
   }
 
   code += ">\n";
@@ -215,7 +217,7 @@ HtmlGenerator['box'] = function(block) {
     code += "0 4.5 0'";
   }
 
-  var color = HtmlGenerator.valueToCode(block, 'color', Blockly.JavaScript.ORDER_ATOMIC);
+  var color = block.getFieldValue('color');
   code += " color='";
   if (color != "") {
     code += color + "'";

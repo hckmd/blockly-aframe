@@ -127,17 +127,68 @@
           <block type="division"></block>
           <block type="generictag"></block>
         </category>
-        <category name="A-Frame" colour="#5b6da5">
-          <block type="load_aframe"></block>
+        <category name="A-Frame" colour="#93a55b">
           <block type="a_scene"></block>
+          <block type="box">
+            <value name="position_vector">
+              <block type="vector">
+                <field name="x">0</field>
+                <field name="y">1</field>
+                <field name="z">-3</field>
+              </block>
+            </value>
+            <value name="rotation_vector">
+              <block type="vector">
+                <field name="x">0</field>
+                <field name="y">0</field>
+                <field name="z">0</field>
+              </block>
+            </value>
+          </block>
+          <block type="sphere">
+            <value name="position_vector">
+              <block type="vector">
+                  <field name="x">2</field>
+                  <field name="y">2</field>
+                  <field name="z">-3</field>
+              </block>
+            </value>
+            <field name="color">grey</field>
+            <field name="radius">1</field>
+          </block>
+          <block type="cylinder">
+            <value name="position_vector">
+              <block type="vector">
+                  <field name="x">1</field>
+                  <field name="y">2</field>
+                  <field name="z">-3</field>
+              </block>
+            </value>
+            <field name="color">grey</field>
+            <field name="radius">1</field>
+            <field name="height">1</field>
+          </block>
+          <block type="plane">
+            <value name="position_vector">
+                <block type="vector">
+                    <field name="x">-2</field>
+                    <field name="y">2</field>
+                    <field name="z">-3</field>
+                </block>
+              </value>
+              <value name="rotation_vector">
+                  <block type="vector">
+                    <field name="x">0</field>
+                    <field name="y">0</field>
+                    <field name="z">0</field>
+                  </block>
+                </value>
+          </block>
           <block type="background"></block>
           <block type="genericattribute"></block>
-          <block type="box"></block>
+          <block type="load_aframe"></block>
           <block type="vector"></block>
           <block type="input_text"></block>
-          <block type="sphere"></block>
-          <block type="cylinder"></block>
-          <block type="plane"></block>
         </category>
       </category>
     </xml>
@@ -236,12 +287,16 @@
         var xml = Blockly.Xml.workspaceToDom(workspace);
         var xml_text = Blockly.Xml.domToText(xml);
         newWindow = window.open("data:application/octet-stream," + encodeURIComponent(xml_text), 'webseite.blockly.xml');
+
+
       }
       document.getElementById("saveButton").onclick = saveWorkspaceToDownload;
 
       function saveHtmlToDownload() {
         var code = HtmlGenerator.workspaceToCode(workspace);
-        newWindow = window.open("data:application/octet-stream," + encodeURIComponent(code), 'webseite.html');
+        //newWindow = window.open("data:application/octet-stream," + encodeURIComponent(code), 'webseite.html');
+        var newWindow = window.open();
+        newWindow.document.write(code);
       }
       document.getElementById("exportButton").onclick = saveHtmlToDownload;
 

@@ -646,22 +646,19 @@ var htmlBlocks =
 },
 {
   "type": "a_scene",
-  "message0": "scene %1 properties %2 %3 entities %4 %5",
+  "message0": "scene %1 background color: %2 %3 %4",
   "args0": [
     {
       "type": "input_dummy"
     },
     {
-      "type": "input_dummy",
-      "align": "CENTRE"
-    },
-    {
-      "type": "input_statement",
-      "name": "properties"
+      "type": "field_input",
+      "name": "background_color",
+      "text": "skyblue"
     },
     {
       "type": "input_dummy",
-      "align": "CENTRE"
+      "align": "RIGHT"
     },
     {
       "type": "input_statement",
@@ -729,9 +726,9 @@ var htmlBlocks =
       "align": "RIGHT"
     },
     {
-      "type": "input_value",
+      "type": "field_input",
       "name": "color",
-      "align": "RIGHT"
+      "text": "white"
     }
   ],
   "previousStatement": null,
@@ -782,7 +779,7 @@ var htmlBlocks =
 },
 {
   "type": "sphere",
-  "message0": "sphere %1 position %2 radius %3 color %4",
+  "message0": "sphere %1 position: %2 radius: %3 color: %4",
   "args0": [
     {
       "type": "input_dummy"
@@ -793,14 +790,14 @@ var htmlBlocks =
       "align": "RIGHT"
     },
     {
-      "type": "input_value",
+      "type": "field_input",
       "name": "radius",
-      "align": "RIGHT"
+      "text": "1"
     },
     {
-      "type": "input_value",
+      "type": "field_input",
       "name": "color",
-      "align": "RIGHT"
+      "text": "grey"
     }
   ],
   "previousStatement": null,
@@ -811,7 +808,7 @@ var htmlBlocks =
 },
 {
   "type": "cylinder",
-  "message0": "cylinder %1 position %2 radius %3 height %4 color %5",
+  "message0": "cylinder %1 position %2 radius: %3 height: %4 color: %5",
   "args0": [
     {
       "type": "input_dummy"
@@ -822,19 +819,19 @@ var htmlBlocks =
       "align": "RIGHT"
     },
     {
-      "type": "input_value",
+      "type": "field_input",
       "name": "radius",
-      "align": "RIGHT"
+      "text": "1"
     },
     {
-      "type": "input_value",
+      "type": "field_input",
       "name": "height",
-      "align": "RIGHT"
+      "text": "1"
     },
     {
-      "type": "input_value",
+      "type": "field_input",
       "name": "color",
-      "align": "RIGHT"
+      "text": "grey"
     }
   ],
   "previousStatement": null,
@@ -845,11 +842,8 @@ var htmlBlocks =
 },
 {
   "type": "plane",
-  "message0": "plane %1 width: %2 height: %3 color: %4 %5 position: %6 rotation: %7",
+  "message0": "plane width: %1 height: %2 color: %3 %4 position: %5 rotation: %6",
   "args0": [
-    {
-      "type": "input_dummy"
-    },
     {
       "type": "field_input",
       "name": "width",
@@ -863,7 +857,7 @@ var htmlBlocks =
     {
       "type": "field_input",
       "name": "color",
-      "text": "black"
+      "text": "grey"
     },
     {
       "type": "input_dummy"
