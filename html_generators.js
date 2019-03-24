@@ -158,7 +158,6 @@ HtmlGenerator['html'] = function(block) {
   return code;
 };
 
-
 function getAllHtmlHeadSection() {
   
   var str = "<!DOCTYPE HTML>\n";

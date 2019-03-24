@@ -1,0 +1,104 @@
+<html>
+
+    <script src="js/jquery-3.3.1.js"></script>
+
+    <body>
+
+        <!-- old elements -->
+        <div class="scene-a">
+            <h1>Heading 1</h1>
+        </div>
+
+        <!-- new elements -->
+        <div class="scene-b">
+            <p>beep</p>
+            <p>boop</p>
+            <h1>Heading 1</h1>
+        </div>
+
+    </body>
+
+    <script>
+    
+        $(document).ready(function(){
+
+            var a_elements = $(".scene-a")[0].children;
+            var b_elements = $(".scene-b")[0].children;
+            console.log(a_elements);
+            console.log(b_elements);
+
+            // Replacing elements
+            if (a_elements.length == b_elements.length) 
+            {
+
+                for (var i = 0; i < a_elements.length; i++) {
+
+                    var old_element = a_elements[i];
+                    var new_element = b_elements[i];
+                    
+                    if (old_element.outerHTML != new_element.outerHTML) {
+                        console.log('test');
+                        a_elements[i].outerHTML = new_element.outerHTML;
+                    }
+                }
+            }
+            // Deleting elements
+            else if (a_elements.length > b_elements.length)
+            {
+                var lines_deleted = a_elements.length - b_elements.length;
+                var deleted_counter = 0;
+                for (var i = 0; i < b_elements.length; i++) {
+                   
+                    var old_element = a_elements[i];
+                    var new_element = b_elements[i];
+
+                    if (old_element.outerHTML != new_element.outerHTML) {
+                        console.log('deleted...')
+                        a_elements[i].remove();
+                        deleted_counter++;
+                        if (deleted_counter == lines_deleted) {
+                            break;
+                        }
+                    }
+                }
+
+                // Delete the lines that have been removed from the end of the stack of blocks
+                for (var d = 0; d < lines_deleted - deleted_counter; d++) {
+                    a_elements[b_elements.length + d].remove();
+                }
+
+            // When lines added
+            } else {
+
+                var lines_added = b_elements.length - a_elements.length;
+                var added_counter = 0;
+
+                for (var i = 0; i < a_elements.length; i++) {
+                    
+                    var old_element = a_elements[i];
+                    var new_element = b_elements[i];
+
+                    if (old_element.outerHTML != new_element.outerHTML) {
+                        console.log('added...')
+                        console.log(a_elements[i]);
+                        $(b_elements[i].outerHTML).insertBefore(a_elements[i]);
+                        added_counter++;
+                        if (added_counter == lines_added) {
+                            break;
+                        }
+                    }
+                }
+
+            }
+
+            for (var a = 0; a < lines_added - added_counter; a++) {
+                
+                var new_element = b_elements[b_elements.length - lines_added + a];
+                console.log(new_element);
+                $('.scene-a').append($(new_element.outerHTML));
+            }
+        }); 
+
+    </script>
+
+</html>
